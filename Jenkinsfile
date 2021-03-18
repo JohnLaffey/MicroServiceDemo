@@ -1,5 +1,8 @@
 pipeline {
-  node ("k8s")
+  agent {
+    node {
+       label 'tp'
+        }
   stages {
     stage('stageone') {
       environment {
