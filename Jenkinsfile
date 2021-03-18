@@ -3,6 +3,7 @@ pipeline {
     node {
        label 'tp'
         }
+  }      
   stages {
     stage('stageone') {
       environment {
