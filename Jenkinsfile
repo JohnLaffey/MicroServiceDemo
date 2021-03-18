@@ -12,7 +12,8 @@ pipeline {
       steps {
         echo 'Hi!  I am stage one'
         sh 'export KUBECONFIG=/.kube/config'
-        sh 'kubectl get pods'
+        sh 'ls /.kube/config'
+        sh 'cat /.kube/config'
       }
     }
   }
