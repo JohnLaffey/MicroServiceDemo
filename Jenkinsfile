@@ -11,6 +11,7 @@ pipeline {
       }
       steps {
         echo 'Hi!  I am stage one'
+        sh 'kubectl get nodes'
       }
     }
   }
