@@ -16,11 +16,13 @@ pipeline {
                     contextName: 'kubernetes-admin@kubernetes',
                     clusterName: 'kubernetes',
                     namespace: 'default'
-                    ])
+                       ])
+        {
         echo 'Hi!  I am stage one'
         sh 'export KUBECONFIG=/.kube/config'
         sh 'ls /.kube/config'
         sh 'cat /.kube/config'
+        }  
       }
     }
   }
