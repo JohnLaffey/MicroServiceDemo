@@ -19,7 +19,6 @@ pipeline {
                        ])
         {
         echo 'Hi!  I am stage one'
-        sh 'export KUBECONFIG=/.kube/config'
         sh 'kubectl get nodes'
         }  
       }
