@@ -11,8 +11,8 @@ pipeline {
       }
       steps {
         echo 'Hi!  I am stage one'
-        sh 'export KUBECONFIG=/./kube/config'
-        sh 'kubectl get nodes'
+        sh 'export KUBECONFIG=/.kube/configg'
+        sh 'echo $KUBECONFIG'
       }
     }
   }
