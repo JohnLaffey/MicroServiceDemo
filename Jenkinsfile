@@ -39,4 +39,4 @@ post {
     }         
      slackSend channel: '#my-development-channel',
                 message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${BUILD_USER}\n More info at: ${env.BUILD_URL}"
-}           
+}
