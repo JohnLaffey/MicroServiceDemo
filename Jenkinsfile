@@ -23,7 +23,7 @@ pipeline {
           sleep 10
           sh '(npm run start&)'
           sleep 15
-          sh 'result=$(curl -s 'http://localhost:3000/color')'
+          sh 'result=$(curl -s "http://localhost:3000/color")'
           if (expression {color !== result}) {
             currentBuild.result = 'ABORTED'
             error ('Values do not match, stopping pipeline')
