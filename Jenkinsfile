@@ -30,10 +30,10 @@ pipeline {
           sh 'result=$(curl -s "http://localhost:3000/color")'
         }    
     steps {
-        sh ' if [[ "$color" != $result ]]
+        sh ''' if [[ "$color" != $result ]]
              then                
              currentBuild.result = 'ABORTED'
-             error ('Values do not match, stopping pipeline')' 
+             error ('Values do not match, stopping pipeline')''' 
              }     
           }}
           }
