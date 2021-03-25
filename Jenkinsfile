@@ -28,13 +28,16 @@ pipeline {
           sh 'telepresence intercept dataprocessingservice --port 3000 --mount=false'
           sleep 10
           sh 'result=$(curl -s "http://localhost:3000/color")'
-          if (expression {color !== result}) {
-            currentBuild.result = 'ABORTED'
-            error ('Values do not match, stopping pipeline')
+          sh 'result=$(echo $result | tr -d '"')'
+        }    
+          steps {
+             if (expression {color !== result}) {
+               currentBuild.result = 'ABORTED'
+               error ('Values do not match, stopping pipeline')
+             }     
           }}
           }
-
         }
         }  
       }
-}
+}     
