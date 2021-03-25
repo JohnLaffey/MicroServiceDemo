@@ -18,7 +18,7 @@ pipeline {
                     namespace: 'default'
                        ])
         {
-        dir("/Users/me/ambassador/edgey-corp-nodejs/DataProcessingService")  {
+        dir("/home/kube/edgey-corp-nodejs/DataProcessingService")  {
           sh 'npm install&'
           sleep 10
           sh '(npm run start&)'
