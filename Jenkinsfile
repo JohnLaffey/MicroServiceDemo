@@ -35,6 +35,7 @@ pipeline {
           }
     stage('stagetwo'){
         steps {
+           sh 'result=$(echo $result | tr -d '"')' 
            sh ''' if [[ "$color" != $result ]]
               then                
               currentBuild.result = 'ABORTED'
