@@ -3,10 +3,10 @@ pipeline {
     node {
        label 'tp'
         }
+  }  
   environment {
     color = 'purple'
-  }    
-  }      
+  }       
   stages {
     stage('getvars') {
       steps {
