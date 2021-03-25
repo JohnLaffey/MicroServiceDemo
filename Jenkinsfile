@@ -3,12 +3,12 @@ pipeline {
     node {
        label 'tp'
         }
-  }  
-  environment {
-    color = 'purple'
-  }       
+  }      
   stages {
-    stage('getvars') {
+    stage('stageone') {
+      environment {
+        color = 'purple'
+      }
       steps {
         withKubeConfig([credentialsId: 'e1edc5dd-52de-42fe-9451-732149a23353',
                     caCertificate: 'MyClusterTLSCertificate',
@@ -28,14 +28,17 @@ pipeline {
           sh 'telepresence intercept dataprocessingservice --port 3000 --mount=false'
           sleep 10
           sh 'result=$(curl -s "http://localhost:3000/color")'
+          sh 'result=$(echo $result | tr -d '"')'
         }    
-          steps {
-             if (expression {color !== result}) {
-               currentBuild.result = 'ABORTED'
-               error ('Values do not match, stopping pipeline')
+    steps {
+        sh ' if [[ "$color" != $result ]]
+             then                
+             currentBuild.result = 'ABORTED'
+             error ('Values do not match, stopping pipeline')' 
              }     
           }}
           }
         }
         }  
-}     
+      }
+}  
