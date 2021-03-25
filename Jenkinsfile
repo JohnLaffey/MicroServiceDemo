@@ -31,12 +31,15 @@ pipeline {
         } 
         }
       }         
+
+          }
+    stage('stagetwo'){
         steps {
            sh ''' if [[ "$color" != $result ]]
               then                
               currentBuild.result = 'ABORTED'
               error ('Values do not match, stopping pipeline')''' 
               }     
-          }
+    }      
           }
 }
