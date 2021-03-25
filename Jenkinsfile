@@ -28,7 +28,6 @@ pipeline {
           sh 'telepresence intercept dataprocessingservice --port 3000 --mount=false'
           sleep 10
           sh 'result=$(curl -s "http://localhost:3000/color")'
-          sh 'result=$(echo $result | tr -d '"')'
         }    
     steps {
         sh ' if [[ "$color" != $result ]]
