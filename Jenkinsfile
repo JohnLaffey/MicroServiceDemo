@@ -35,8 +35,7 @@ pipeline {
           }
     stage('stagetwo'){
         steps {
-           sh 'newresult=$(echo $result | tr -d '"')' 
-           sh ''' if [[ "$color" != $newresult ]]
+           sh ''' if [[ "$color" != $result ]]
               then                
               currentBuild.result = 'ABORTED'
               error ('Values do not match, stopping pipeline')''' 
