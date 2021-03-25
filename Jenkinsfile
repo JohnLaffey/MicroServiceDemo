@@ -46,5 +46,4 @@ pipeline {
   post {
     unsuccessful {
      echo 'This build has failed.'   
-    }         
-}
+    }         }
