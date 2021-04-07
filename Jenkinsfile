@@ -38,7 +38,7 @@ pipeline {
            sh 'result=$(echo $result | tr -d '///"')'
            sh ''' if [[ "$color" != $result ]]
               then                
-              currentBuild.result = 'ABORTED'
+              currentBuild.result = 'FAILURE'
               error ('Values do not match, stopping pipeline')''' 
               }     
     }      
