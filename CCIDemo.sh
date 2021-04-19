@@ -39,7 +39,7 @@ $TELEPRESENCE connect > $output_location
 telepresence intercept dataprocessingservice --port 3000
 
 #############################################################
-####  TEST LOCAL SERVICE VALUE                            ####
+####  TEST LOCAL SERVICE VALUE                           ####
 ####  Capture test value                                 ####       
 ####  Need to strip tick marks off curl output           #### 
 #############################################################
@@ -56,12 +56,12 @@ else
 fi
 
 
-###################################################################
-#### Steps to Install and Remove Telepresence dynamically 
-#### The command is for Linux, see 
-#### https://www.getambassador.io/docs/telepresence/latest/install/
-#### for your specific Build Environment download
-###################################################################
+########################################################################
+#### DYNAMIC INSTALLATION OF TELEPRESENCE                           #### 
+#### The command is for Linux, see                                  #### 
+#### https://www.getambassador.io/docs/telepresence/latest/install/ ####
+#### for your specific Build Environment download                   ####
+########################################################################
 
 ### Installation commands
 # echo "Installing an old version of telepresence to /tmp/old_telepresence to verify it prompts for update"
