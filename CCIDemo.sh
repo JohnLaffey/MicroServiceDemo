@@ -1,4 +1,6 @@
-### start here
+#################################
+## SETUP ENVIRONMENT         ####    
+#################################
 
 # DEBUG 1 gives you output of higher level commands (e.g. telepresence, kubectl)
 if [ $DEBUG -ge 1 ]; then
@@ -18,10 +20,6 @@ output=`curl "-s " $AMBASSADOR_SERVICE_IP | grep 'green'`
         exit 1
     fi
 
-###########################################################
-####  Verify telepresence list works           ####
-###########################################################
-
 output=`$TELEPRESENCE list | grep 'ready to intercept'`
 verify_output_empty "${output}" false
 
@@ -33,7 +31,7 @@ if [[ "$?" != 0 ]]; then
 fi
 
 ###########################################################
-####  Start Telepresence in the Build Environment      ####
+####  START TELEPRESENCE IN THE BUILD ENVIRONMENT      ####
 ###########################################################
 $TELEPRESENCE connect > $output_location
 
@@ -41,7 +39,8 @@ $TELEPRESENCE connect > $output_location
 telepresence intercept dataprocessingservice --port 3000
 
 #############################################################
-####  Test local service value and compare againt remote ####
+####  TEST LOCAL SERVICE VALUE                            ####
+####  Capture test value                                 ####       
 ####  Need to strip tick marks off curl output           #### 
 #############################################################
 
@@ -72,5 +71,3 @@ fi
 #### Removal Commands
 #echo "Removing old version of telepresence: /tmp/old_telepresence"
 # sudo rm /tmp/old_telepresence
-
-
