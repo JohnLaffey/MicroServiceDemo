@@ -21,4 +21,11 @@ jobs:
       - name: capture test value
         run: result=$(curl -s "http://localhost:3000/color")
            # strip the tick marks off the string in $output
-        run: result=$(echo $result | tr -d '///"') 
+        run: result=$(echo $result | tr -d '///"')  
+
+      - name: compare test value
+        run: |
+             if ["$output" != $result"]; then
+                echo "Values do not match, stopping pipelinet"     
+                exit 1
+             fi        
