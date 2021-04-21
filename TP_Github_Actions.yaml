@@ -1,9 +1,0 @@
-name: Telepresence with GitHub Actions Demo
-on: [push]
-jobs:
-  PlaceHolder:
-    runs-on: centos-latest
-    env:
-      COLOR: blue
-    steps:
-      - run echo "This job ran"
