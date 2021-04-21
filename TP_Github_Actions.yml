@@ -7,11 +7,18 @@ jobs:
       COLOR: blue
       AMBASSADOR_SERVICE_IP: $your.service.ip 
     steps:
-      - name: capture test value
-        run: output=`curl "-s " $AMBASSADOR_SERVICE_IP | grep 'green'`
-      -name: ensure service is running locally
+      - name: ensure service is running locally
           - run: |
                  if ["$output" != ""]; then
                     echo "The service is not running in the build environment"     
                     exit 1
                  fi
+
+      - name: Telepresence connect and intercept
+        - run: telepresence connect
+        - run: telepresence intercept dataprocessingservice --port 3000
+
+      - name: capture test value
+        run: result=$(curl -s "http://localhost:3000/color")
+           # strip the tick marks off the string in $output
+        run: result=$(echo $result | tr -d '///"') 
